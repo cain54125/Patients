@@ -4,46 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>w07 範例二 Ajax </title>
     <script src="utility.js" type="text/javascript"></script>    
+	<link rel=stylesheet href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+	<script src="jquery.mobile-1.4.5/jquery.js"></script>
+	<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
     <script type="text/javascript">
       var XHR = null; 
- 
-      // 直接取字串
-      function startRequest()
+		$( document ).bind( "mobileinit", function() { 
+		   $.support.cors = true;    
+		   $.mobile.allowCrossDomainPages = true; 
+		}); 
+		function text()
       {
-        XHR = createXMLHttpRequest();
-        XHR.open("GET", "http://192.168.43.112/ch09/news.txt", true);
-        XHR.onreadystatechange = handleStateChange;          
-        XHR.send(null);
-      }
-
-      // GET 的方式 
-      function php_startRequest()
-      {
-        XHR = createXMLHttpRequest();
-        XHR.open("GET", "http://192.168.43.112/ch09/aj01.php?send=1", true);
-        XHR.onreadystatechange = handleStateChange;          
-        XHR.send(null);
-      }
-
-      // POST 的方式
-      function php_startRequest_P(par)
-      {
-        XHR = createXMLHttpRequest();
-        XHR.open("POST", "http://192.168.43.112/ch09/aj01.php", true);
-		XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        XHR.onreadystatechange = handleStateChange;          
-        XHR.send("send="+par);
-      }
-
-      function handleStateChange()
-      {
-        if (XHR.readyState == 4)
-        {
-          if (XHR.status == 200)
-            document.getElementById("span01").innerHTML = XHR.responseText;
-          else
-            window.alert("檔案開啟錯誤!");
-        }
+         $.post("http://192.168.43.112/phoneGap/test.php",function(data, st){
+			document.getElementById("span01").innerHTML=data;
+		 })
       }
     </script>
 <style type="text/css">
@@ -59,11 +33,7 @@
 <h1>範例二 Ajax ( 1 )</h1>
 <h2>直接取得字串</h2>
 
-<input type="button" value="直接取得字串" onclick="startRequest()" /> &nbsp;|&nbsp;
-<input type="button" value="PHP送回字串" onclick="php_startRequest()" />
-<input type="button" value="PHP送回字串(POST)" onclick="php_startRequest_P(2)" />
-<input type="button" value="PHP送回影像(POST)" onclick="php_startRequest_P(3)" />
-
+<input type="button" value="test" onclick="text()" />
 <div id="content">
 <span id="span01"></span>
 </div>
