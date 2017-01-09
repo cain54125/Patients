@@ -2,8 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
+		<link rel=stylesheet href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+		<script src="jquery.mobile-1.4.5/jquery.js"></script>
+		<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
         <title>Blank App</title>
 		<script type="text/javascript">
+		$( document ).bind( "mobileinit", function() { 
+		   $.support.cors = true;    
+		   $.mobile.allowCrossDomainPages = true; 
+		}); 
 		function open_win(u) 
 		{
 		window.open(u)
