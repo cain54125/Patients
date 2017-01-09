@@ -17,6 +17,7 @@
       {
          $.post( "http://192.168.43.112/phoneGap/test.php", function( data ) {
 			$( "#content" ).html( data );
+			document.getElementById("content").innerHTML=data;
 			});
       }
 	  function text1()
@@ -32,6 +33,8 @@
 <h2>直接取得字串</h2>
 
 <input type="button" value="test" onclick="text()" />
+<input type="button" value="test1" onclick="text1()" />
+
 <div id="content">
 456
 </div>
