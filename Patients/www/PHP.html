@@ -15,18 +15,16 @@
 		}); 
 		function text()
       {
-         $.post("http://192.168.43.112/phoneGap/test.php",,function(data, st){
-			document.getElementById("span01").innerHTML=data;
-		 })
+         $.post( "http://192.168.43.112/phoneGap/test.php", function( data ) {
+			$( "#content" ).html( data );
+			});
       }
+	  function text1()
+      {
+		document.getElementById("content").innerHTML="123";
+	}
     </script>
-<style type="text/css">
-#content {
-    margin: 3ex;
-	border: thin #000;
-	background-color: #CCC;
-}
-</style>
+
 </head>
 
 <body>
@@ -35,7 +33,7 @@
 
 <input type="button" value="test" onclick="text()" />
 <div id="content">
-<span id="span01"></span>
+456
 </div>
 </body>
 </html>
